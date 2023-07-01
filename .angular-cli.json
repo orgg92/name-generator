@@ -1,0 +1,10 @@
+{
+  "apps": [{
+    "styles": ["styles.css"]
+  }],
+  "assets": [
+    "assets",
+
+    "favicon.ico"
+  ]
+}

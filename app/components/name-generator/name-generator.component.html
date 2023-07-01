@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="d-flex flex-row genres">
+    <div class="col">
+      <!-- <mat-list-item class="primary-imenu-item" role="listitem">
+        <mat-form-field class="select-form">
+          <mat-select placeholder="Genres" name="genre" class="filter-select" [(ngModel)]="selectedGenres"
+            [compareWith]="equals" multiple #yearSelect>
+
+            <mat-option *ngFor="let genre of genres" [value]="genre.description" (click)="modifyGenreSelection(genre)">
+              {{ genre.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-list-item> -->
+    </div>
+  </div>
+
+  <div class="d-flex flex-row subgenres">
+    <div class="col">
+      <mat-list-item class="primary-imenu-item" role="listitem">
+        <mat-form-field class="select-form">
+          <mat-select placeholder="Genres" name="subgenre" class="filter-select" [(ngModel)]="selectedGenres"
+            [compareWith]="equals" multiple #subGenreSelect>
+
+            <mat-option *ngFor="let genre of subgenres" [value]="genre.description"
+              (click)="modifySubgenreSelection(genre)">
+              {{ genre.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-list-item>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row subgenres">
+    <div class="col">
+      <mat-list-item class="primary-imenu-item" role="listitem">
+        <mat-form-field class="select-form">
+          <mat-select placeholder="Vibes" name="vibes" class="filter-select" [(ngModel)]="selectedVibes"
+            [compareWith]="equals" multiple #subGenreSelect>
+
+            <mat-option *ngFor="let vibe of vibes" [value]="vibe.description" (click)="modifyVibeSelection(vibe)">
+              {{ vibe.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-list-item>
+    </div>
+  </div>
+
+
+  <div class="d-flex flex-row length">
+  <div class="col">
+    <mat-list-item class="primary-imenu-item" >
+      <mat-form-field class="select-form">
+        <mat-select placeholder="Length" name="length" class="filter-select" [(ngModel)]="selectedLength"
+          [compareWith]="equals" #lengthSelect>
+
+          <mat-option *ngFor="let length of nameLengths" [value]="length.description">
+            {{ length.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-list-item>
+  </div>
+</div>
+
+
+
+  <div class="d-flex flex-row">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="console.log('test')">Generate</button>
+    </div>
+  </div>
+
+
+</div>

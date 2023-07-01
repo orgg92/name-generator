@@ -1,0 +1,13 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.genres {
+  width: 100%;
+}
+
+.container {
+  padding: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+}

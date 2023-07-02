@@ -157,3 +157,9 @@ export class NameLength {
   description: string;
   length: number;
 }
+
+export class GeneratedName {
+  firstWord: string;
+  secondWord: string;
+  thirdWord: string;
+}

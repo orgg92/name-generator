@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DependenciesService, Vibe, Word } from './dependencies.service';
+import { DependenciesService, GeneratedName, Vibe, Word } from './dependencies.service';
 import { v4 as uuidv4 } from 'uuid';
 import { syllable } from 'syllable';
 import { HttpClient } from '@angular/common/http';
@@ -40,6 +40,8 @@ export class NameGeneratorService {
 
   private prefixes = ['Lil', 'The', 'DJ', 'MC'];
 
+  private wordTypes: string[] = ['adjective', 'noun']
+
   private takeRandomWord: boolean = false; // bool
   private takeAdjective: boolean = false; // bool
   private takeNoun: boolean = false; // bool
@@ -78,6 +80,17 @@ export class NameGeneratorService {
     
   }
 
+  private stylizeWord(word: string): string {
+    let styleIndicator;
+
+    // remove vowels
+
+    // substitute number
+
+    return 'test'
+  }
+
+
   public async readFiles(): Promise<void> {
     let request1 = this.httpClient.get(
       'https://gist.githubusercontent.com/hugsy/8910dc78d208e40de42deb29e62df913/raw/eec99c5597a73f6a9240cab26965a8609fa0f6ea/english-adjectives.txt',
@@ -95,97 +108,58 @@ export class NameGeneratorService {
 
       console.log(this.words);
 
-      this.generateName();
+
     });
   }
 
-  public generateRandomNumber(): number {
-    return 1;
+  public generateRandomNumber(wordList: Word[]): number {
+    return Math.floor(Math.random() * (wordList.length - 1 - 0 + 0))
+  }
+
+  public generateRandomWord(wordType: string): Word {
+    let words = this.words.filter(x => x.category.toLocaleLowerCase() == wordType);
+
+    return words[this.generateRandomNumber(words)]
   }
 
   public generateBoolean(): boolean {
-    return true;
+    return Math.random() >= 0.5 
   }
 
-  public generateName(): void {
-    console.log('test');
+  public generateRandomWordType(): string {
+    return this.generateBoolean() ? this.wordTypes[0] : this.wordTypes[1]
   }
 
-  // public generateName(): void {
-  //   for (var i = 0; i < 100; i++) {
-  //     // #1 decide if band should begin with "the, lil or DJ" or none
+  // short 1-2 syllables
+  // medium 2-3 syllables
+  // long 3-4 syllables
+  // XL 4-6 syllables
+  // random 
 
-  //     this.prefixIndicator =
-  //       Math.random() < 0.2 ? Math.floor(Math.random() * (4 - 0 + 0)) : null;
-  //     if (this.prefixIndicator) {
-  //       this.prefix = this.prefixes[this.prefixIndicator];
-  //     }
+  public generateName(): GeneratedName {
 
-  //     this.firstWord =
-  //       this.words[
-  //         Math.floor(Math.random() * (this.words.length - 1 - 0 + 0))
-  //       ];
-  //     // #2 pick random word
+    let wordType = this.generateRandomWordType();
 
-  //     while (this.firstWord == this.lastFirstWord) {
-  //       this.firstWord =
-  //         this.adjectives[
-  //           Math.floor(Math.random() * (this.adjectives.length - 1 - 0 + 0))
-  //         ];
-  //     }
+    this.firstWord = this.generateRandomWord(wordType)
 
-  //     if (!this.prefixes.find((x) => x == this.prefix)) {
-  //       this.secondWord =
-  //         this.nouns[
-  //           Math.floor(Math.random() * (this.nouns.length - 1 - 0 + 0))
-  //         ];
-  //       while (
-  //         this.firstWord == this.secondWord ||
-  //         this.secondWord == this.lastSecondWord
-  //       ) {
-  //         this.secondWord =
-  //           this.nouns[
-  //             Math.floor(Math.random() * (this.nouns.length - 1 - 0 + 0))
-  //           ];
-  //         while (this.secondWord == this.lastSecondWord) {
-  //           this.secondWord =
-  //             this.nouns[
-  //               Math.floor(Math.random() * (this.nouns.length - 1 - 0 + 0))
-  //             ];
-  //         }
-  //       }
-  //     }
+    wordType = this.generateRandomWordType();
+    this.secondWord = this.generateRandomWord(wordType);
 
-  //     console.log(this.firstWord.description)
-  //     console.log(this.secondWord.description);
-  //     console.log('test')
+    while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
+    this.secondWord = this.generateRandomWord(wordType);
+    }
 
-  //     let fullTitle: string = '';
-  //     if (this.prefix) {
-  //       fullTitle.concat(this.prefix + ' ');
-  //     }
+      // #2 pick random word
 
-  //     if (this.firstWord) {
-  //       fullTitle.concat(this.firstWord.description + this.secondWord.description ?? ' ');
-  //     }
+      console.log(this.firstWord.description + this.secondWord.description)
 
-  //     if (this.secondWord) {
-  //       fullTitle.concat(this.secondWord.description);
-  //     }
+      this.lastFirstWord = this.firstWord;
+      this.lastSecondWord = this.secondWord;
+      this.prefix = '';
 
-  //     console.log(fullTitle)
+      let name: GeneratedName = { firstWord: this.firstWord.description, secondWord: this.secondWord.description, thirdWord: '' };
 
-  //     // #3 decide whether band should have 2 (if nothing was selected in stage 2) or 3 (if there was) words in the name
+      return name;
+  }
 
-  //     // #4 pick genres for band
-
-  //     // #5 random age number between 0-10 years
-
-  //     // #6 pick random instruments band is looking for
-
-  //     this.lastFirstWord = this.firstWord;
-  //     this.lastSecondWord = this.secondWord;
-  //     this.prefix = '';
-  //   }
-  // }
 }

@@ -11,3 +11,39 @@
 input {
   margin-bottom: 10px;
 }
+
+.name-container {
+  margin: 10px;
+}
+
+button {
+  margin: 5px
+}
+
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: black !important;
+}
+
+::ng-deep .mat-slider-thumb-label {
+  background-color: black !important;
+
+}
+
+::ng-deep .mat-slider-thumb {
+  background-color: black !important;
+}
+
+.slider-container {
+  margin-top: 25px;
+  /* border: solid;
+  border-width: thin;
+  border-radius: 10px; */
+  padding: 10px;
+}
+
+.name-card {
+  border: solid;
+  border-width: thin;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}

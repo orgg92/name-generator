@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DependenciesService, Genre, NameLength, SubGenre, Vibe } from '../../services/dependencies.service';
+import { DependenciesService, GeneratedName, Genre, NameLength, SubGenre, Vibe } from '../../services/dependencies.service';
 import { NameGeneratorService } from './../../services/name-generator.service';
 import { MatSelect, MatSelectTrigger } from '@angular/material';
 
@@ -10,6 +10,10 @@ import { MatSelect, MatSelectTrigger } from '@angular/material';
   styleUrls: ['./name-generator.component.css'],
 })
 export class NameGeneratorComponent implements OnInit {
+
+  public generatedName: GeneratedName;
+  public invertWord: boolean = false;
+  public nameLengthSetting: number = 0;
 
   public formGroup: FormGroup;
   public genres: Genre[] = [];
@@ -24,7 +28,6 @@ export class NameGeneratorComponent implements OnInit {
 
   public nameLengths: NameLength[] = [];
 
-
   constructor(
     private nameGeneratorService: NameGeneratorService,
     private dependenciesService: DependenciesService
@@ -37,6 +40,21 @@ export class NameGeneratorComponent implements OnInit {
     this.nameLengths = this.dependenciesService.returnLengths();
 
     this.buildFormGroup();
+
+
+  }
+
+  public get getGeneratedName(): string {
+    // if no generatedName, error is thrown on launch
+      return this.generatedName ? (this.invertWord ? this.generatedName.secondWord + this.generatedName.firstWord : this.generatedName.firstWord + this.generatedName.secondWord) : null
+
+
+  }
+
+
+  public updateNameLength(event): void {
+    this.nameLengthSetting = event.value;
+    console.log(this.nameLengthSetting);
   }
 
   public buildFormGroup(): void {
@@ -44,8 +62,14 @@ export class NameGeneratorComponent implements OnInit {
     this.formGroup = new FormGroup ({
       genre: new FormControl(null),
       subGenre: new FormControl(null),
-      vibe: new FormControl(null)
+      vibe: new FormControl(null),
+      lengthSelect: new FormControl(null),
+      slider: new FormControl(null)
     })
+  }
+
+  public invertNames(): void {
+    this.invertWord = !this.invertWord;
   }
 
   public modifyGenreSelection(genre: Genre): void {
@@ -95,5 +119,10 @@ export class NameGeneratorComponent implements OnInit {
   deselectAll(select: MatSelect) {
     this.genreSelection = [];
     select.value = [];
+  }
+
+  public generateName(): void {
+
+   this.generatedName = this.nameGeneratorService.generateName();
   }
 }

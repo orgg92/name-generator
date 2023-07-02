@@ -55,7 +55,7 @@
         <mat-list-item class="primary-imenu-item">
           <mat-form-field class="select-form">
             <mat-select placeholder="Length" name="lengthSelect" class="filter-select" [(ngModel)]="selectedLength"
-              [compareWith]="equals" (selectionChange)="updateNameLength($event)" #lengthSelect>
+              [compareWith]="equals" (selectionChange)="setNameLength($event)" #lengthSelect>
 
               <mat-option *ngFor="let length of nameLengths" [value]="length.description">
                 {{ length.description }}
@@ -79,7 +79,7 @@
   <div class="name-card">
   <div class="col">
     <div class="d-flex justify-content-center name-container">
-      Your generated word is:
+      Your generated name is:
     </div>
   </div>
     <div class="d-flex flex-row">

@@ -52,9 +52,15 @@ export class NameGeneratorComponent implements OnInit {
   }
 
 
+  public setNameLength(event): void {
+    this.nameLengthSetting = event.value;
+    console.log(this.nameLengthSetting);
+  }
+
   public updateNameLength(event): void {
     this.nameLengthSetting = event.value;
     console.log(this.nameLengthSetting);
+    this.generateName()
   }
 
   public buildFormGroup(): void {
@@ -121,8 +127,7 @@ export class NameGeneratorComponent implements OnInit {
     select.value = [];
   }
 
-  public generateName(): void {
-
-   this.generatedName = this.nameGeneratorService.generateName();
+  public generateName(length?: number): void {
+   this.generatedName = this.nameGeneratorService.generateName(length);
   }
 }

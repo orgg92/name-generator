@@ -13,3 +13,9 @@
 .filter-sidenav .mat-select-trigger {
   font-size: 1rem !important;
 }
+
+body {
+  background: rgb(64, 114, 139);
+  background: linear-gradient(119deg, rgb(100, 133, 243) 0%, rgb(138, 202, 216) 100%); 
+  color: white
+}

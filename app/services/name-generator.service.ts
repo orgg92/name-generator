@@ -136,7 +136,7 @@ export class NameGeneratorService {
   // XL 4-6 syllables
   // random 
 
-  public generateName(): GeneratedName {
+  public generateName(length?: number): GeneratedName {
 
     let wordType = this.generateRandomWordType();
 
@@ -146,20 +146,36 @@ export class NameGeneratorService {
     this.secondWord = this.generateRandomWord(wordType);
 
     while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
-    this.secondWord = this.generateRandomWord(wordType);
+      this.secondWord = this.generateRandomWord(wordType);
     }
 
       // #2 pick random word
 
-      console.log(this.firstWord.description + this.secondWord.description)
+    while (length && (this.firstWord.syllables + this.secondWord.syllables) > length)
+    {
 
-      this.lastFirstWord = this.firstWord;
-      this.lastSecondWord = this.secondWord;
-      this.prefix = '';
+      let wordType = this.generateRandomWordType();
 
-      let name: GeneratedName = { firstWord: this.firstWord.description, secondWord: this.secondWord.description, thirdWord: '' };
+      this.firstWord = this.generateRandomWord(wordType)
+  
+      wordType = this.generateRandomWordType();
+      this.secondWord = this.generateRandomWord(wordType);
+  
+      while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
+        this.secondWord = this.generateRandomWord(wordType);
+      }
+  
+    }
 
-      return name;
+    console.log(this.firstWord.description + this.secondWord.description)
+
+    this.lastFirstWord = this.firstWord;
+    this.lastSecondWord = this.secondWord;
+    this.prefix = '';
+
+    let name: GeneratedName = { firstWord: this.firstWord.description, secondWord: this.secondWord.description, thirdWord: '' };
+
+    return name;
   }
 
 }

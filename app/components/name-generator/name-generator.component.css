@@ -33,6 +33,10 @@ button {
   background-color: black !important;
 }
 
+/* ::ng-deep .btn-primary {
+  background-color: rgb(112, 69, 19) !important;
+} */
+
 .slider-container {
   margin-top: 25px;
   /* border: solid;

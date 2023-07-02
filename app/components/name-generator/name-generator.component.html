@@ -76,30 +76,20 @@
 
   <div *ngIf="this.generatedName">
 
-  <div class="name-card">
-  <div class="col">
-    <div class="d-flex justify-content-center name-container">
-      Your generated name is:
-    </div>
-  </div>
-    <div class="d-flex flex-row">
+    <div class="name-card">
       <div class="col">
         <div class="d-flex justify-content-center name-container">
-        <b>  {{ getGeneratedName }} </b>
+          Your generated name is:
         </div>
       </div>
-    </div>
-
-  </div>
-
-    <div class="d-flex flex-row">
-      <div class="col">
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-primary" (click)="invertNames()"> Invert </button>
-
-          <button type="button" class="btn btn-primary" (click)="generateName()"> Next </button>
+      <div class="d-flex flex-row">
+        <div class="col">
+          <div class="d-flex justify-content-center name-container">
+            <b>  {{ getGeneratedName }} </b>
+          </div>
         </div>
       </div>
+
     </div>
 
     <div class="slider-container">
@@ -115,19 +105,37 @@
       <div class="d-flex flex-row">
         <div class="col">
           <div class="d-flex justify-content-center">
-            <mat-slider #slider (change)="updateNameLength($event)" class="example-margin" [disabled]="disabled" [max]="'5'"
-              [min]="'0'" [step]="'1'">
+            <mat-slider #slider (change)="updateNameLength($event)" class="example-margin" [disabled]="disabled"
+              [max]="'4'" [min]="'1'" [step]="'1'">
             </mat-slider>
           </div>
         </div>
       </div>
       <div class="d-flex flex-row">
-      <div class="col">
-        <div class="d-flex justify-content-center">
-          {{ nameLengthSetting }}
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            {{ getNameLengthSetting }}
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="d-flex flex-row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-primary" (click)="invertNames()"> Invert </button>
+
+          <button type="button" class="btn btn-primary" (click)="stylizeName()"> Stylize </button>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+
+          <button type="button" class="btn btn-primary" (click)="generateName()"> Next </button>
+        </div>
+      </div>
     </div>
   </div>
 

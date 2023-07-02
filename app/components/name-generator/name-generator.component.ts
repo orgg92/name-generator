@@ -13,7 +13,7 @@ export class NameGeneratorComponent implements OnInit {
 
   public generatedName: GeneratedName;
   public invertWord: boolean = false;
-  public nameLengthSetting: number = 0;
+  public nameLengthSetting: number = 1;
 
   public formGroup: FormGroup;
   public genres: Genre[] = [];
@@ -48,6 +48,25 @@ export class NameGeneratorComponent implements OnInit {
     // if no generatedName, error is thrown on launch
       return this.generatedName ? (this.invertWord ? this.generatedName.secondWord + this.generatedName.firstWord : this.generatedName.firstWord + this.generatedName.secondWord) : null
 
+
+  }
+
+  public get getNameLengthSetting(): string {
+    switch(this.nameLengthSetting) {
+      case (1):
+        return "Very short";
+      case (2):
+        return "Short";
+      case (3):
+        return "Medium";
+      case (4):
+        return "Large";
+      
+    }
+
+  }
+
+  public stylizeName(): void {
 
   }
 

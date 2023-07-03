@@ -28,6 +28,8 @@ export class NameGeneratorComponent implements OnInit {
 
   public nameLengths: NameLength[] = [];
 
+  public showLengthBubble: boolean = false;
+
   constructor(
     private nameGeneratorService: NameGeneratorService,
     private dependenciesService: DependenciesService
@@ -54,13 +56,15 @@ export class NameGeneratorComponent implements OnInit {
   public get getNameLengthSetting(): string {
     switch(this.nameLengthSetting) {
       case (1):
-        return "Very short";
+        return "XS";
       case (2):
-        return "Short";
+        return "S";
       case (3):
-        return "Medium";
+        return "M";
       case (4):
-        return "Large";
+        return "L";
+      case (5):
+        return "XL";
       
     }
 
@@ -126,6 +130,10 @@ export class NameGeneratorComponent implements OnInit {
 
   public modifyVibeSelection(vibe: Vibe): void {
 
+  }
+
+  public changeLength(): void {
+    this.showLengthBubble = !this.showLengthBubble;
   }
 
   equals(objOne, objTwo) {

@@ -87,50 +87,76 @@
     </div>
   </div>
 
+  <!-- ******* End of first screen *******-->
+
   <!-- ******* Start of second screen ******* -->
 
   <div *ngIf="this.generatedName">
     <!-- Start of display generated name -->
 
     <div class="d-flex flex-row name-container name-card">
-      <div class="col">
+		<div class="col-md-12">
+			<div class="flex-row">
+				<div class="col-md-12">
         <div class="d-flex justify-content-center">
-          <h2>
-            <b> {{ getGeneratedName }} </b>
-          </h2>
-        </div>
+        <h2>
+          <b> {{ getGeneratedName }} </b>
+        </h2>
       </div>
-    </div>
-
+				</div>
+			</div>
+			<div class="flex-row">
+				<div class="col-md-12">
     <!-- Start of the modify buttons -->
 
     <div class="d-flex flex-row">
-      <div class="col">
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-dark" (click)="invertNames()">
-            Invert
-          </button>
+    <div class="col">
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-light" (click)="invertNames()">
+          Invert
+        </button>
 
-          <button type="button" class="btn btn-dark" (click)="stylizeName()">
-            Stylize
-          </button>
+        <button type="button" class="btn btn-light" (click)="stylizeName()">
+          Stylize
+        </button>
 
-          <button type="button" class="btn btn-dark" (click)="changeLength()">
-            Change Length
-          </button>
-        </div>
+        <button type="button" class="btn btn-light" (click)="changeLength()">
+          Change Length
+        </button>
       </div>
     </div>
+  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- <div class="d-flex name-container name-card">
+      <div class="flex-row">
+
+
+
+      </div>
+      <div class="flex-row">
+        <div class="col">
+          Hello
+        </div>
+      </div>
+    
+    </div> -->
+
 
     <!-- Start of next/back buttons -->
-
-    <div class="d-flex flex-row">
-      <div class="col">
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-dark" (click)="generateName()">
-            Next
-          </button>
-        </div>
+    <div class="d-flex flex-row justify-content-reverse">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-dark" (click)="generateName()">
+                Next
+              </button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-dark" (click)="previousName()">
+                Back
+              </button>
       </div>
     </div>
 
@@ -165,7 +191,7 @@
       <div class="d-flex flex-row length-container">
         <div class="col">
           <div class="d-flex justify-content-center">
-            [ {{ getNameLengthSetting }} ]
+             {{ getNameLengthSetting }} 
           </div>
         </div>
       </div>

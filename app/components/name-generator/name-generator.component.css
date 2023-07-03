@@ -21,15 +21,15 @@ button {
 }
 
 ::ng-deep .mat-accent .mat-slider-track-fill {
-  background-color: black !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 ::ng-deep .mat-slider-thumb-label {
-  background-color: black !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 ::ng-deep .mat-slider-thumb {
-  background-color: black !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 /* ::ng-deep .btn-primary {
@@ -42,9 +42,12 @@ button {
   border-width: thin;
   border-radius: 10px;
   padding-top: 15px;
-  background-color: rgb(73, 73, 73);
+  background-color: rgb(43, 43, 43);
+  border-color: rgb(43, 43, 43);
   position: relative;
   top: -100px;
+  left: 10px;
+  color: white;
 }
 
 .name-card {
@@ -56,13 +59,18 @@ button {
   color: rgb(255, 255, 255);
   padding-top: 10px;
   margin-bottom: 10px;
-  min-width: 40vw;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: 300px;
 }
 
 .length-container {
   margin-bottom: 10px;
 }
 
-.modifier-container {
+/* .modifier-container {
   margin: 5px;
-}
+} */

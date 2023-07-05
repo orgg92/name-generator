@@ -1,5 +1,21 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: rgb(0, 0, 0) !important;
+}
+
+::ng-deep .mat-slider-thumb-label {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+::ng-deep .mat-slider-thumb {
+  background-color: rgb(0, 0, 0) !important;
+}
+
+/* ::ng-deep .btn-primary {
+  background-color: rgb(112, 69, 19) !important;
+} */
+
 .genres {
   width: 100%;
 }
@@ -20,34 +36,30 @@ button {
   margin: 5px;
 }
 
-::ng-deep .mat-accent .mat-slider-track-fill {
-  background-color: rgb(255, 255, 255) !important;
+.length {
+  color: white;
 }
-
-::ng-deep .mat-slider-thumb-label {
-  background-color: rgb(255, 255, 255) !important;
-}
-
-::ng-deep .mat-slider-thumb {
-  background-color: rgb(255, 255, 255) !important;
-}
-
-/* ::ng-deep .btn-primary {
-  background-color: rgb(112, 69, 19) !important;
-} */
 
 .slider-container {
   margin-top: 10px;
-  border: solid;
-  border-width: thin;
-  border-radius: 10px;
-  padding-top: 50px;
-  background-color: rgb(43, 43, 43);
-  border-color: rgb(43, 43, 43);
+  padding-top: 25px;
+  background-color: rgb(71, 71, 71);
   position: relative;
-  top: -100px;
+  top: -200px;
   left: 10px;
-  color: white;
+  color: rgb(184, 184, 184);
+  filter: drop-shadow(10px 5px 10px #000);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+button {
+  border-radius: 5px !important;
+}
+
+.generated-word {
+  margin-bottom: 20px;
 }
 
 .name-card {
@@ -61,7 +73,7 @@ button {
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
   min-width: 300px;
@@ -69,6 +81,22 @@ button {
 
 .length-container {
   margin-bottom: 10px;
+}
+
+.name-length {
+  font-size: smaller;
+}
+
+.slider {
+  border:solid;
+  border-color: white;
+  border-radius: 50px;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 200px;
 }
 
 /* .modifier-container {

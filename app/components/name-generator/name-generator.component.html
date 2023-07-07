@@ -128,7 +128,7 @@
         <button type="button" class="btn btn-dark" (click)="generateName()">
               Next
         </button>
-      <!-- </div>
+        <!-- </div>
       <div class="col"> -->
         <button type="button" class="btn btn-dark" (click)="previousName()">
               Back
@@ -136,38 +136,31 @@
       </div>
     </div>
 
-    <!-- Start of the slider -->
+    <!-- Start of name length bubble -->
 
     <div *ngIf="this.showLengthBubble" class="slider-container" (mouseleave)="this.showLengthBubble=false">
+
+      <!-- Start of the slider -->
+    
       <div class="d-flex flex-row">
         <div class="col">
           <div class="d-flex justify-content-center">
-            <!-- <label>Name Length </label> -->
+            <div class="d-flex flex-row">
+              <mat-slider #slider (change)="updateNameLength($event)" class="example-margin slider" [disabled]="disabled"
+                [max]="'5'" [min]="'1'" [step]="'1'">
+              </mat-slider>
+            </div>
+            <div class="d-flex flex-row length-container">
+            <div class="col">
+              <div class="d-flex justify-content-center name-length">
+                <b> {{ getNameLengthSetting }} </b>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
-
-      <div class="d-flex flex-row">
-        <div class="col">
-          <div class="d-flex justify-content-center">
-            <mat-slider #slider (change)="updateNameLength($event)" class="example-margin slider" [disabled]="disabled"
-              [max]="'5'" [min]="'1'" [step]="'1'">
-            </mat-slider>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex flex-row length-container">
-        <div class="col">
-          <div class="d-flex justify-content-center name-length">
-            {{ getNameLengthSetting }}
-          </div>
-        </div>
-      </div>
-      <!-- 
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-dark" (click)="changeLength()">Close</button>
-      </div> -->
+  
     </div>
   </div>
 </div>

@@ -28,7 +28,7 @@ export class NameGeneratorComponent implements OnInit {
 
   public nameLengths: NameLength[] = [];
 
-  public showLengthBubble: boolean = false;
+  public showLengthBubble: boolean = true;
 
   public lastGeneratedName: GeneratedName;
 
@@ -58,15 +58,15 @@ export class NameGeneratorComponent implements OnInit {
   public get getNameLengthSetting(): string {
     switch(this.nameLengthSetting) {
       case (1):
-        return "Extra Short";
+        return "XS";
       case (2):
-        return "Short";
+        return "S";
       case (3):
-        return "Medium";
+        return "M";
       case (4):
-        return "Long";
+        return "L";
       case (5):
-        return "Extra Long";
+        return "XL";
       
     }
 

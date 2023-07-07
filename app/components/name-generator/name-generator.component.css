@@ -41,17 +41,17 @@ button {
 }
 
 .slider-container {
-  margin-top: 10px;
-  padding-top: 25px;
-  background-color: rgb(54, 54, 54);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* background-color: rgb(54, 54, 54); */
   position: relative;
-  top: -80px;
+  top: -90px;
   left: 200px;
-  color: rgb(184, 184, 184);
-  filter: drop-shadow(10px 5px 10px #000);
+  color: rgb(0, 0, 0);
+  /* filter: drop-shadow(10px 5px 10px #000); */
   border-radius: 5px;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+background-color: rgb(54, 54, 54);
+  margin-top: 5px;
   width: 50%;
   height: 20%;
 }
@@ -73,8 +73,8 @@ button {
   color: rgb(255, 255, 255);
   padding-top: 50px;
   padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-bottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
@@ -83,21 +83,24 @@ button {
 }
 
 .length-container {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .name-length {
   font-size: smaller;
+  margin-top: 30px;
+  color: white;
 }
 
 .slider {
   border:solid;
   border-color: white;
   border-radius: 20px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   min-width: 150px;
   margin: 10px;
+  color: white;
 }
 
 /* .modifier-container {

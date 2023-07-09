@@ -28,7 +28,8 @@ export class NameGeneratorComponent implements OnInit {
 
   public nameLengths: NameLength[] = [];
 
-  public showLengthBubble: boolean = true;
+  public showLengthBubble: boolean = false;
+  public showStyleBubble: boolean = false;
 
   public lastGeneratedName: GeneratedName;
 
@@ -135,8 +136,25 @@ export class NameGeneratorComponent implements OnInit {
   }
 
   public changeLength(): void {
+    if (this.showStyleBubble)
+    {
+      this.resetControls();
+    }
     this.showLengthBubble = !this.showLengthBubble;
   }
+
+  public changeStyling(): void {
+    if (this.showLengthBubble) {
+      this.resetControls();
+    }
+    this.showStyleBubble = !this.showStyleBubble;
+  }
+
+  public resetControls(): void {
+    this.showLengthBubble = false;
+    this.showStyleBubble = false;
+  }
+
 
   equals(objOne, objTwo) {
     if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {

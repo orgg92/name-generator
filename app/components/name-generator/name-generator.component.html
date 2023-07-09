@@ -106,7 +106,7 @@
               Reverse
             </button>
 
-                  <button type="button" class="btn btn-light" (click)="stylizeName()">
+                  <button type="button" class="btn btn-light" (click)="changeStyling()">
               Stylize
             </button>
 
@@ -138,29 +138,57 @@
 
     <!-- Start of name length bubble -->
 
-    <div *ngIf="this.showLengthBubble" class="slider-container" (mouseleave)="this.showLengthBubble=false">
+    <div *ngIf="this.showLengthBubble" class="length-slider-container" (mouseleave)="this.showLengthBubble=false">
 
-      <!-- Start of the slider -->
-    
+      <!-- Start of the length slider -->
+
       <div class="d-flex flex-row">
         <div class="col">
           <div class="d-flex justify-content-center">
             <div class="d-flex flex-row">
-              <mat-slider #slider (change)="updateNameLength($event)" class="example-margin slider" [disabled]="disabled"
-                [max]="'5'" [min]="'1'" [step]="'1'">
+              <mat-slider #slider (change)="updateNameLength($event)" class="example-margin slider"
+                [disabled]="disabled" [max]="'5'" [min]="'1'" [step]="'1'">
               </mat-slider>
             </div>
             <div class="d-flex flex-row length-container">
-            <div class="col">
-              <div class="d-flex justify-content-center name-length">
-                <b> {{ getNameLengthSetting }} </b>
+              <div class="col">
+                <div class="d-flex justify-content-center name-length">
+                  <b> {{ getNameLengthSetting }} </b>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Start of styling bubble -->
+
+    <div *ngIf="this.showStyleBubble" class="style-slider-container" (mouseleave)="this.showStyleBubble=false">
+
+      <!-- Start of the styling panel -->
+
+      <div class="d-flex flex-row">
+
+        <div class="form">
+          <div class="d-flex flex-row justify-content-end">
+            <div class="col-md-11">
+              <label> Swap Numbers </label>
+            </div>
+            <div class="col-md-1">
+              <input type="radio" />
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-end">
+            <div class="col-md-11">
+              <label> Invert Vowels </label>
+            </div>
+            <div class="col-md-1">
+              <input type="radio" />
+            </div>
           </div>
         </div>
       </div>
-  
     </div>
   </div>
-</div>

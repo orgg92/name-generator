@@ -58,7 +58,7 @@ export class NameGeneratorComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    console.log(this.lengthSliderContainer)
+    // console.log(this.lengthSliderContainer)
   }
 
   public get getGeneratedName(): string {
@@ -148,8 +148,8 @@ export class NameGeneratorComponent implements OnInit {
       this.resetControls();
     }
     this.showLengthBubble = !this.showLengthBubble;
-    console.log(this.lengthSliderContainer)
-    console.log(this.elRef.nativeElement.querySelector('#lengthSliderContainer'));  
+    // console.log(this.lengthSliderContainer)
+    // console.log(this.elRef.nativeElement.querySelector('#lengthSliderContainer'));  
   }
 
   public changeStyling(): void {

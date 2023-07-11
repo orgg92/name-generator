@@ -138,7 +138,7 @@
 
     <!-- Start of name length bubble -->
 
-    <div *ngIf="this.showLengthBubble" class="length-slider-container" (mouseleave)="this.showLengthBubble=false">
+    <div ngModel #lengthSliderContainer *ngIf="this.showLengthBubble" class="length-slider-container" (mouseleave)="this.showLengthBubble=false">
 
       <!-- Start of the length slider -->
 
@@ -172,22 +172,27 @@
       <div class="d-flex flex-row">
 
         <div class="form">
-          <div class="d-flex flex-row justify-content-end">
-            <div class="col-md-11">
-              <label> Swap Numbers </label>
+          <form>
+            <div class="d-flex flex-row justify-content-end button-row">
+
+              <div class="col-md-11">
+                <label> Swap Numbers </label>
+              </div>
+              <div class="col-md-1 button-container">
+                <mat-radio-button> </mat-radio-button>
+              </div>
             </div>
-            <div class="col-md-1">
-              <input type="radio" />
+            <div class="d-flex flex-row justify-content-end button-row">
+              <div class="col-md-11">
+                <label> Invert Vowels </label>
+              </div>
+              <div class="col-md-1 button-container">
+                <mat-radio-button> </mat-radio-button>
+              </div>
+
             </div>
-          </div>
-          <div class="d-flex flex-row justify-content-end">
-            <div class="col-md-11">
-              <label> Invert Vowels </label>
-            </div>
-            <div class="col-md-1">
-              <input type="radio" />
-            </div>
-          </div>
+
+          </form>
         </div>
       </div>
     </div>

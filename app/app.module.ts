@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatSelectModule, MatOptionModule, MatButtonModule, MatSliderModule } from '@angular/material';
+import { MatListModule, MatSelectModule, MatOptionModule, MatButtonModule, MatSliderModule, MatRadioModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatButtonModule,
     HttpClientModule,
-    MatSliderModule
+    MatSliderModule,
+    MatRadioModule
   ],
   declarations: [AppComponent, HelloComponent, NameGeneratorComponent],
   bootstrap: [AppComponent],

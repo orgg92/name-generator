@@ -1,6 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DependenciesService, GeneratedName, Genre, NameLength, SubGenre, Vibe } from '../../services/dependencies.service';
+import {
+  DependenciesService,
+  GeneratedName,
+  Genre,
+  NameLength,
+  SubGenre,
+  Vibe,
+} from '../../services/dependencies.service';
 import { NameGeneratorService } from './../../services/name-generator.service';
 import { MatSelect, MatSelectTrigger } from '@angular/material';
 
@@ -11,6 +18,8 @@ import { MatSelect, MatSelectTrigger } from '@angular/material';
 })
 export class NameGeneratorComponent implements OnInit {
 
+  // @ViewChild('lengthSliderContainer', { read: ElementRef }) lengthSliderContainer: any;
+
   public generatedName: GeneratedName;
   public invertWord: boolean = false;
   public nameLengthSetting: number = 1;
@@ -20,7 +29,7 @@ export class NameGeneratorComponent implements OnInit {
   public genreSelection: Genre[] = [];
   public genreSelected;
 
-  public subgenres: SubGenre [] = [];
+  public subgenres: SubGenre[] = [];
   public subgenreSelection: SubGenre[] = [];
 
   public vibes: Vibe[] = [];
@@ -35,7 +44,8 @@ export class NameGeneratorComponent implements OnInit {
 
   constructor(
     private nameGeneratorService: NameGeneratorService,
-    private dependenciesService: DependenciesService
+    private dependenciesService: DependenciesService,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit() {
@@ -45,38 +55,37 @@ export class NameGeneratorComponent implements OnInit {
     this.nameLengths = this.dependenciesService.returnLengths();
 
     this.buildFormGroup();
-
-
+  }
+  
+  ngAfterViewInit() {
+    console.log(this.lengthSliderContainer)
   }
 
   public get getGeneratedName(): string {
     // if no generatedName, error is thrown on launch
-      return this.generatedName ? (this.invertWord ? this.generatedName.secondWord + this.generatedName.firstWord : this.generatedName.firstWord + this.generatedName.secondWord) : null
-
-
+    return this.generatedName
+      ? this.invertWord
+        ? this.generatedName.secondWord + this.generatedName.firstWord
+        : this.generatedName.firstWord + this.generatedName.secondWord
+      : null;
   }
 
   public get getNameLengthSetting(): string {
-    switch(this.nameLengthSetting) {
-      case (1):
-        return "XS";
-      case (2):
-        return "S";
-      case (3):
-        return "M";
-      case (4):
-        return "L";
-      case (5):
-        return "XL";
-      
+    switch (this.nameLengthSetting) {
+      case 1:
+        return 'XS';
+      case 2:
+        return 'S';
+      case 3:
+        return 'M';
+      case 4:
+        return 'L';
+      case 5:
+        return 'XL';
     }
-
   }
 
-  public stylizeName(): void {
-
-  }
-
+  public stylizeName(): void {}
 
   public setNameLength(event): void {
     this.nameLengthSetting = event.value;
@@ -86,61 +95,61 @@ export class NameGeneratorComponent implements OnInit {
   public updateNameLength(event): void {
     this.nameLengthSetting = event.value;
     console.log(this.nameLengthSetting);
-    this.generateName()
+    this.generateName();
   }
 
   public buildFormGroup(): void {
-
-    this.formGroup = new FormGroup ({
+    this.formGroup = new FormGroup({
       genre: new FormControl(null),
       subGenre: new FormControl(null),
       vibe: new FormControl(null),
       lengthSelect: new FormControl(null),
-      slider: new FormControl(null)
-    })
+      slider: new FormControl(null),
+    });
   }
 
   public invertNames(): void {
+    this.resetControls();
     this.invertWord = !this.invertWord;
   }
 
   public modifyGenreSelection(genre: Genre): void {
-    if (this.genreSelection.find((x: Genre) => x.id == genre.id)){
-      this.genreSelection = this.genreSelection.filter((x: Genre) => x.id != genre.id);
+    if (this.genreSelection.find((x: Genre) => x.id == genre.id)) {
+      this.genreSelection = this.genreSelection.filter(
+        (x: Genre) => x.id != genre.id
+      );
       this.subgenres = [];
     } else {
       this.genreSelection.push(genre);
-      let _subgenres =  this.dependenciesService.returnSubGenres(); 
-      this.subgenres = _subgenres.filter(x => x.genreId == genre.id);
+      let _subgenres = this.dependenciesService.returnSubGenres();
+      this.subgenres = _subgenres.filter((x) => x.genreId == genre.id);
       console.log(this.subgenres);
-
     }
-    console.log(this.genreSelection)
+    console.log(this.genreSelection);
   }
 
-  public filterListOfSubgenres(): void {
-
-  }
+  public filterListOfSubgenres(): void {}
 
   public modifySubgenreSelection(subgenre: SubGenre): void {
-    if (this.subgenreSelection.find((x: SubGenre) => x.id == subgenre.id)){
-      this.subgenreSelection = this.subgenreSelection.filter((x: Genre) => x.id != subgenre.id);
+    if (this.subgenreSelection.find((x: SubGenre) => x.id == subgenre.id)) {
+      this.subgenreSelection = this.subgenreSelection.filter(
+        (x: Genre) => x.id != subgenre.id
+      );
     } else {
       this.genreSelection.push(subgenre);
     }
-    console.log(this.genreSelection)
+    console.log(this.genreSelection);
   }
 
-  public modifyVibeSelection(vibe: Vibe): void {
-
-  }
+  public modifyVibeSelection(vibe: Vibe): void {}
 
   public changeLength(): void {
-    if (this.showStyleBubble)
-    {
+    if (this.showStyleBubble) {
       this.resetControls();
     }
     this.showLengthBubble = !this.showLengthBubble;
+    console.log(this.lengthSliderContainer)
+    console.log(this.elRef.nativeElement.querySelector('#lengthSliderContainer'));  
   }
 
   public changeStyling(): void {
@@ -154,7 +163,6 @@ export class NameGeneratorComponent implements OnInit {
     this.showLengthBubble = false;
     this.showStyleBubble = false;
   }
-
 
   equals(objOne, objTwo) {
     if (typeof objOne !== 'undefined' && typeof objTwo !== 'undefined') {
@@ -175,8 +183,8 @@ export class NameGeneratorComponent implements OnInit {
   }
 
   public generateName(length?: number): void {
-   this.generatedName? this.lastGeneratedName = this.generatedName : null;
-   this.generatedName = this.nameGeneratorService.generateName(length);
+    this.generatedName ? (this.lastGeneratedName = this.generatedName) : null;
+    this.generatedName = this.nameGeneratorService.generateName(length);
   }
 
   public previousName(): void {

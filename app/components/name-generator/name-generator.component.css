@@ -1,5 +1,8 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+/* overriding some imported component styling
+   not the best approach but works and is cheap and cheerful */
+
 ::ng-deep .mat-accent .mat-slider-track-fill {
   background-color: rgb(0, 0, 0) !important;
 }
@@ -12,9 +15,25 @@
   background-color: rgb(0, 0, 0) !important;
 }
 
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:rgb(255, 255, 255); 
+}
+
+::ng-deep  .mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:rgb(255, 255, 255);
+  background-color:rgb(255, 255, 255) ;
+}
+
+::ng-deep  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:rgba(39, 39, 39, 0.26);
+}
+
+
 /* ::ng-deep .btn-primary {
   background-color: rgb(112, 69, 19) !important;
 } */
+
+
 
 .genres {
   width: 100%;
@@ -69,8 +88,13 @@ button {
   background-color: rgb(54, 54, 54);
   margin-top: 5px;
   width: 50%;
-  height: 20%;
+  height: 50%;
+  min-height: 25%;
   filter: drop-shadow(10px 5px 10px #000);
+}
+
+.button-row {
+  padding-bottom: 5px;
 }
 
 button {
@@ -129,3 +153,7 @@ label {
   margin-right: 5px;
 }
 
+
+.button-container {
+  padding-left: 5px;
+}

@@ -58,11 +58,10 @@ export class NameGeneratorComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    // console.log(this.lengthSliderContainer)
+    
   }
 
   public get getGeneratedName(): string {
-    // if no generatedName, error is thrown on launch
     return this.generatedName
       ? this.invertWord
         ? this.generatedName.secondWord + this.generatedName.firstWord
@@ -170,18 +169,6 @@ export class NameGeneratorComponent implements OnInit {
     }
   }
 
-  // array is selectedYears
-  selectAll(select: MatSelect, values, array) {
-    select.value = values;
-    array = values;
-    console.log(this.genreSelection); // selectedYears is still undefined
-  }
-
-  deselectAll(select: MatSelect) {
-    this.genreSelection = [];
-    select.value = [];
-  }
-
   public generateName(length?: number): void {
     this.generatedName ? (this.lastGeneratedName = this.generatedName) : null;
     this.generatedName = this.nameGeneratorService.generateName(length);
@@ -190,4 +177,5 @@ export class NameGeneratorComponent implements OnInit {
   public previousName(): void {
     this.generatedName = this.lastGeneratedName;
   }
+
 }

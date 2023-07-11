@@ -87,7 +87,7 @@ button {
   border-radius: 5px;
   background-color: rgb(54, 54, 54);
   margin-top: 5px;
-  width: 50%;
+  width: 60%;
   height: 50%;
   min-height: 25%;
   filter: drop-shadow(10px 5px 10px #000);
@@ -155,7 +155,7 @@ label {
 
 
 .button-container {
-  padding-left: 5px;
+  padding-left: 15px;
 }
 
 .radio-form-container {

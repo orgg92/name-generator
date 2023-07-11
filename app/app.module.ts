@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatSelectModule, MatOptionModule, MatButtonModule, MatSliderModule, MatRadioModule } from '@angular/material';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { FormsModule } from '@angular/forms';
 import { NameGeneratorComponent } from './components/name-generator/name-generator.component';
 import { NameGeneratorService } from './services/name-generator.service';
@@ -23,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSliderModule,
     MatRadioModule
   ],
-  declarations: [AppComponent, HelloComponent, NameGeneratorComponent],
+  declarations: [AppComponent, NameGeneratorComponent],
   bootstrap: [AppComponent],
   providers: [NameGeneratorService, DependenciesService],
 })

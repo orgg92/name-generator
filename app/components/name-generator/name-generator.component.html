@@ -138,7 +138,7 @@
 
     <!-- Start of name length bubble -->
 
-    <div  *ngIf="this.showLengthBubble" class="length-slider-container" (mouseleave)="this.showLengthBubble=false">
+    <div *ngIf="this.showLengthBubble" class="length-slider-container" (mouseleave)="this.showLengthBubble=false">
 
       <!-- Start of the length slider -->
 
@@ -171,7 +171,7 @@
 
       <div class="d-flex flex-row">
 
-        <div class="form">
+        <div class="fluid-container form radio-form-container">
           <form>
             <div class="d-flex flex-row justify-content-end button-row">
 
@@ -189,7 +189,6 @@
               <div class="col-md-1 button-container">
                 <mat-radio-button> </mat-radio-button>
               </div>
-
             </div>
 
           </form>

@@ -18,9 +18,6 @@ export class DependenciesService {
     // make list of vibes
 
     this.createVibes();
-
-    // make list of subgenres linked to genres & vibes
-
     this.createSubGenres(testId.id);
 
     console.log("subgenres", this.subGenres);
@@ -28,16 +25,6 @@ export class DependenciesService {
     this.createLengths();
 
     console.log(this.nameLengths);
-
-    // make list of words associated to vibe
-
-    // filter non relevant
-
-    // select a prefix based off genre
-
-    // select first word based off vibe & syvgebre
-
-    // select second word based off vibe & subgenre
   }
 
   public returnGenres(): Genre[] {

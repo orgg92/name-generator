@@ -169,9 +169,9 @@ export class NameGeneratorComponent implements OnInit {
     }
   }
 
-  public generateName(length?: number): void {
+  public generateName(): void {
     this.generatedName ? (this.lastGeneratedName = this.generatedName) : null;
-    this.generatedName = this.nameGeneratorService.generateName(length);
+    this.generatedName = this.nameGeneratorService.generateName(this.nameLengthSetting);
   }
 
   public previousName(): void {

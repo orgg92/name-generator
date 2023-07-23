@@ -8,32 +8,6 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class NameGeneratorService {
-  private randomWords = ['Franz', 'Muse', 'Strokes', 'Play'];
-  // private adjectives = [
-  //   'Screaming',
-  //   'Rolling',
-  //   'Engage',
-  //   'Black',
-  //   'Blue',
-  //   'Grey',
-  //   'Shining',
-  //   'Empty',
-  //   'Sharp',
-  // ];
-  // private nouns = [
-  //   'Eagles',
-  //   'Trees',
-  //   'Notes',
-  //   'Melody',
-  //   'Sound',
-  //   'System',
-  //   'Skies',
-  //   'Level',
-  //   'Wolf',
-  //   'Head',
-  //   'Eraser',
-  //   'House',
-  // ];
 
   private adjectives: any[] = [];
   private nouns: any[] = [];
@@ -136,7 +110,7 @@ export class NameGeneratorService {
   // XL 4-6 syllables
   // random 
 
-  public generateName(length?: number): GeneratedName {
+  public generateName(length: number): GeneratedName {
 
     let wordType = this.generateRandomWordType();
 
@@ -145,13 +119,9 @@ export class NameGeneratorService {
     wordType = this.generateRandomWordType();
     this.secondWord = this.generateRandomWord(wordType);
 
-    while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
-      this.secondWord = this.generateRandomWord(wordType);
-    }
+    // #2 pick random word
 
-      // #2 pick random word
-
-    while (length && (this.firstWord.syllables + this.secondWord.syllables) > length)
+    while ((this.firstWord.syllables + this.secondWord.syllables) > length)
     {
 
       let wordType = this.generateRandomWordType();

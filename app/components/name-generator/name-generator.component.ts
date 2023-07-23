@@ -22,7 +22,7 @@ export class NameGeneratorComponent implements OnInit {
 
   public generatedName: GeneratedName;
   public invertWord: boolean = false;
-  public nameLengthSetting: number = 1;
+  public nameLengthSetting: number = 3;
 
   public formGroup: FormGroup;
   public genres: Genre[] = [];

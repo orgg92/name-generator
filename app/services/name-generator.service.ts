@@ -82,6 +82,8 @@ export class NameGeneratorService {
 
       console.log(this.words);
 
+      console.log(this.generateSyllableLength())
+
 
     });
   }
@@ -104,6 +106,10 @@ export class NameGeneratorService {
     return this.generateBoolean() ? this.wordTypes[0] : this.wordTypes[1]
   }
 
+  public generateSyllableLength(length: number): number {
+    return Math.floor(Math.random() * (length - 0 + 0))
+  }
+
   // short 1-2 syllables
   // medium 2-3 syllables
   // long 3-4 syllables
@@ -121,7 +127,7 @@ export class NameGeneratorService {
 
     // #2 pick random word
 
-    while ((this.firstWord.syllables + this.secondWord.syllables) > length)
+    while (length < (this.firstWord.syllables + this.secondWord.syllables))
     {
 
       let wordType = this.generateRandomWordType();

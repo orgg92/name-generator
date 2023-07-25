@@ -103,7 +103,7 @@
               <div class="col">
                 <div class="d-flex justify-content-center">
                   <button type="button" class="btn btn-light" (click)="invertNames()">
-              Reverse
+              FlipWords
             </button>
 
                   <button type="button" class="btn btn-light" (click)="changeStyling()">
@@ -173,6 +173,18 @@
 
         <div class="fluid-container form radio-form-container">
           <form>
+              <div class="d-flex flex-row justify-content-end button-row">
+
+              <div class="col-md-8">
+                <label> Clear Style </label>
+              </div>
+              <div class="col-md-3 button-container">
+
+              </div>
+              <div class="col-md-1 button-container">
+                <mat-radio-button (click)="clearStyles()"> </mat-radio-button>
+              </div>
+            </div>
             <div class="d-flex flex-row justify-content-end button-row">
 
               <div class="col-md-8">
@@ -187,7 +199,7 @@
             </div>
             <div class="d-flex flex-row justify-content-end button-row">
               <div class="col-md-8">
-                <label> Invert Vowels </label>
+                <label> Stylize Vowels </label>
               </div>
               <div class="col-md-3 button-container">
 

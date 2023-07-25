@@ -84,6 +84,10 @@ export class NameGeneratorComponent implements OnInit {
     }
   }
 
+  public clearStyles(): void {
+    
+  }
+
   public stylizeName(): void {}
 
   public setNameLength(event): void {

@@ -82,7 +82,7 @@ export class NameGeneratorService {
 
       console.log(this.words);
 
-      console.log(this.generateSyllableLength())
+      //console.log(this.generateSyllableLength())
 
 
     });
@@ -127,21 +127,21 @@ export class NameGeneratorService {
 
     // #2 pick random word
 
-    while (length < (this.firstWord.syllables + this.secondWord.syllables))
-    {
+    // while (length < (this.firstWord.syllables + this.secondWord.syllables))
+    // {
 
-      let wordType = this.generateRandomWordType();
+    //   let wordType = this.generateRandomWordType();
 
-      this.firstWord = this.generateRandomWord(wordType)
+    //   this.firstWord = this.generateRandomWord(wordType)
   
-      wordType = this.generateRandomWordType();
-      this.secondWord = this.generateRandomWord(wordType);
+    //   wordType = this.generateRandomWordType();
+    //   this.secondWord = this.generateRandomWord(wordType);
   
-      while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
-        this.secondWord = this.generateRandomWord(wordType);
-      }
+    //   while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
+    //     this.secondWord = this.generateRandomWord(wordType);
+    //   }
   
-    }
+    // }
 
     console.log(this.firstWord.description + this.secondWord.description)
 

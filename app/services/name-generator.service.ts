@@ -92,8 +92,13 @@ export class NameGeneratorService {
     return Math.floor(Math.random() * (wordList.length - 1 - 0 + 0))
   }
 
-  public generateRandomWord(wordType: string): Word {
-    let words = this.words.filter(x => x.category.toLocaleLowerCase() == wordType);
+  public generateRandomWord(wordType: string, length?: number): Word {
+    let words;
+    if(!length) {
+      words = this.words.filter(x => x.category.toLocaleLowerCase() == wordType);
+    } else {
+      words = this.words.filter(x => x.category.toLocaleLowerCase() == wordType && x.syllables <= length);
+    }
 
     return words[this.generateRandomNumber(words)]
   }
@@ -110,38 +115,46 @@ export class NameGeneratorService {
     return Math.floor(Math.random() * (length - 0 + 0))
   }
 
+  public translateLengthSettingToSyllableCount(length: number): number[] {
   // short 1-2 syllables
   // medium 2-3 syllables
   // long 3-4 syllables
   // XL 4-6 syllables
   // random 
 
+    switch(length) {
+      case(1):
+        return [1, 2];
+      case(2):
+        return [2,3];
+      case(3):
+        return [3,4];
+      case(4): 
+        return [4,5];
+      case(5):
+        return [5,6];
+      
+    }
+
+  }
+
+
+
   public generateName(length: number): GeneratedName {
+
+    let syllableCountChoice = this.translateLengthSettingToSyllableCount(length);
+    let syllableCount = syllableCountChoice[Math.floor(Math.random() * syllableCountChoice.length - 0 + 0)];
+    console.log(`total syllable count: ${syllableCount}`);
 
     let wordType = this.generateRandomWordType();
 
-    this.firstWord = this.generateRandomWord(wordType)
+    this.firstWord = this.generateRandomWord(wordType, syllableCount);
+    console.log(`total count minus first word count: ${syllableCount - this.firstWord.syllables} [${this.firstWord.description}]`);
 
+    let secondWordLength = syllableCount - this.firstWord.syllables
     wordType = this.generateRandomWordType();
-    this.secondWord = this.generateRandomWord(wordType);
+    this.secondWord = this.generateRandomWord(wordType, secondWordLength);
 
-    // #2 pick random word
-
-    // while (length < (this.firstWord.syllables + this.secondWord.syllables))
-    // {
-
-    //   let wordType = this.generateRandomWordType();
-
-    //   this.firstWord = this.generateRandomWord(wordType)
-  
-    //   wordType = this.generateRandomWordType();
-    //   this.secondWord = this.generateRandomWord(wordType);
-  
-    //   while (this.firstWord.description.endsWith('y') && this.secondWord.description.endsWith('y')  ) {
-    //     this.secondWord = this.generateRandomWord(wordType);
-    //   }
-  
-    // }
 
     console.log(this.firstWord.description + this.secondWord.description)
 
